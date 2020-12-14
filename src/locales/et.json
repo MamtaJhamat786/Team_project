@@ -1,0 +1,12 @@
+{
+    "message": "tere i18n !!",
+
+    "header": {
+      "Findup": "Findup",
+      "home":"Avaleht",
+      "about": "Meist",
+      "login": "Logi sisse",
+      "signup": "Registreeri"
+  
+    }
+  }

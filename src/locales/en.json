@@ -1,0 +1,12 @@
+{
+  "message": "hello i18n !!",
+
+  "header": {
+    "Findup": "Findup",
+    "home":"Home",
+    "about": "About",
+    "login": "Login",
+    "signup": "Signup"
+
+  }
+}
