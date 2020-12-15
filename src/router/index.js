@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 import Home from '../views/Home.vue'
 import Signup from '../views/Signup.vue'
 import About from '../views/About.vue'
@@ -8,6 +7,7 @@ import Login from '../views/Login.vue'
 import i18n from '../i18n'
 
 Vue.use(VueRouter)
+
 
 const router = new VueRouter({
   mode: 'history',

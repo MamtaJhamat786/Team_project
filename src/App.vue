@@ -9,12 +9,18 @@
 import Header from './components/Header.vue'
 export default {
   components: {
+    beforeCreate: function() {
+        document.body.className = 'intro';
+    },
     Header
   }
 }
 </script>
 
 <style lang="scss">
+body.about {
+    background:rgb(216, 150, 138, 0.849)
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

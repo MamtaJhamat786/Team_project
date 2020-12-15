@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class ="About">
     <b-container>
       <br/>
       <h1 >Welcome to join sport field application .</h1>
@@ -25,7 +25,10 @@
 
 <script>
 export default {
-  name: 'About'
+  name: 'About',
+  beforeCreate: function() {
+        document.body.className = 'about';
+    },
 
 }
 </script>
