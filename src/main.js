@@ -6,7 +6,11 @@ import store from './store'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 import firebase from 'firebase'
+
+import i18n from './i18n'
+
 
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
@@ -30,5 +34,6 @@ new Vue({
   template: '<App/>',
   components: { App },
   store,
+  i18n,
   render: function (h) { return h(App) }
 }).$mount('#app')
