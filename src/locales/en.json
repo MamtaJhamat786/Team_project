@@ -2,11 +2,15 @@
   "message": "hello i18n !!",
 
   "header": {
-    "Findup": "Findup",
+    "findup": "Findup",
     "home":"Home",
     "about": "About",
     "login": "Login",
     "signup": "Signup"
-
+  },
+  "about":{
+  "heading":"Welcome to join sport field application",
+   "text":"This application is for those who would like to find their hobby partners in sports field. Though this application people will be able to register theirselves using email and password and by telling their hobbies. Once they are logged in they will be able to join teams of different fields and they can see team members and can contact them. This application will help the people to make new teams and collaborate with each other, share new experience and spend their time. There is need of this application because there are so many international people in every country and they do not know where they can go to play and how they can find people with same hobbies with whom they can play so this is very nice platform for them"
+  
   }
 }

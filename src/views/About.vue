@@ -2,19 +2,12 @@
 <div class ="About">
     <b-container>
       <br/>
-      <h1 >Welcome to join sport field application .</h1>
+      <h1> {{ $t('about.heading') }}</h1>
       <br />
       <b-row>
         <b-col>
           <p class="text-justify font-italic" style="fontSize: 1.8rem">
-            This application is for those who would like to find their hobby partners
-            in sports field. Though this application people will be able to register theirselves
-            using email and password and by telling their hobbies. Once they are logged in they
-            will be able to join teams of different fields and they can see team members and can
-            contact them. This application will help the people to make new teams and collaborate
-            with each other, share new experience and spend their time. There is need of this application
-            because there are so many international people in every country and they do not know where they
-          can go to play and how they can find people with same hobbies with whom they can play so this is very nice platform for them.
+           {{ $t('about.text') }}
           </p>
         </b-col>
       </b-row>
