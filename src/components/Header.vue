@@ -61,7 +61,7 @@ export default {
 
 <style>
 #header{
-  background-color:chocolate;
+  background-color:cornflowerblue;
 }
 
 </style>

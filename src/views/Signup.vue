@@ -1,11 +1,8 @@
 <template>
   <div class="SignupImage">
     <b-container>
-      <div
-        class="fixed-top d-flex align-items-center justify-content-center"
-        style="bottom: 0; overflow-y: auto"
-      >
-        <b-card class="m-auto" style="min-width: 25rem">
+      <div class="pt-5">
+        <b-card class="m-auto" style="max-width: 25rem">
           <h1>Sign Up</h1>
           <b-form class="mx-auto" style="max-width: 30rem">
             <b-input-group class="mt-4">
