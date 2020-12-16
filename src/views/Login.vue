@@ -6,17 +6,17 @@
       <b-card class="mx-auto mt-4" style="max-width: 25rem;">
         
       <b-form class="mx-auto" style="max-width: 30rem">
-        <h1>Login</h1>
+        <h1>{{ $t('header.login') }}</h1>
         <b-alert :show="wrong" variant="danger"> Enter valid password and email</b-alert>
         <b-input-group class="mt-5">
-          <b-form-input placeholder="Email address" type="email" v-model="form.email"></b-form-input>
+          <b-form-input :placeholder="$t('info.email')" type="email" v-model="form.email"></b-form-input>
           </b-input-group>
         <b-input-group class="mt-4">
-          <b-form-input placeholder="Password" type="password" v-model="form.password" autocomplete="on"></b-form-input>
+          <b-form-input :placeholder="$t('info.email')" type="password" v-model="form.password" autocomplete="on"></b-form-input>
         </b-input-group>
 
-        <b-button variant="primary" class="mt-5" @click="submit()">Login</b-button>
-      <p class=" mt-5">Don't have an account? Sign Up  <b-link to="/signup">here</b-link>  </p>
+        <b-button variant="primary" class="mt-5" @click="submit()">{{ $t('header.login') }}</b-button>
+      <p class=" mt-5">{{ $t('info.account') }}  <b-link to="/signup">{{ $t('info.here') }}</b-link>  </p>
      
       </b-form>
       </b-card>

@@ -16,8 +16,18 @@ function loadLocaleMessages () {
   return messages
 }
 
+function loader() {
+  let result;
+  if (localStorage.getItem('lang') === null) {
+    result = process.env.VUE_APP_I18N_LOCALE || 'en'
+  } else {
+    result = localStorage.getItem('lang')
+  }
+  return result
+}
+
 export default new VueI18n({
-  locale: process.env.VUE_APP_I18N_LOCALE || 'en',
+  locale: loader(),
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
   messages: loadLocaleMessages()
 })

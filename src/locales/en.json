@@ -11,6 +11,34 @@
   "about":{
   "heading":"Welcome to join sport field application",
    "text":"This application is for those who would like to find their hobby partners in sports field. Though this application people will be able to register theirselves using email and password and by telling their hobbies. Once they are logged in they will be able to join teams of different fields and they can see team members and can contact them. This application will help the people to make new teams and collaborate with each other, share new experience and spend their time. There is need of this application because there are so many international people in every country and they do not know where they can go to play and how they can find people with same hobbies with whom they can play so this is very nice platform for them"
-  
+  },
+  "info":{
+    "name": "Name",
+    "email": "E-mail",
+    "password": "Password",
+    "homeAddress": "Home Address",
+    "telephoneNum": "Telephone Number",
+    "account": "Don't have an account? Sign Up", 
+    "here": "here",
+    "teamMembersInfo": "Team members info"
+  },
+  "fields":{
+    "areasinterested": "Areas Interested",
+    "basketball": "Basketball",
+    "badminton":"Badminton",
+    "football":"Football",
+    "cricket":"Cricket",
+    "handball":"Handball",
+    "vollyball":"Vollyball",
+    "tabletennis":"Table tennis"  
+  },
+  "fieldInfo":{
+    "basketball":"Hello Basketball lovers, want to know about team members. Click Below.",
+    "badminton":"Hello Badminton lovers, want to know about team members. Click Below.",
+    "football":"Hello Football lovers, want to know about team members. Click Below.",
+    "cricket": "Hello Cricket lovers, want to know about team members. Click Below.",
+    "handball":"Hello Handball lovers, want to know about team members. Click Below.",
+    "vollyball":"Hello Vollyball lovers, want to know about team members. Click Below.",
+    "tabletennis": "Hello Tabletennis lovers, want to know about team members. Click Below."
   }
 }
