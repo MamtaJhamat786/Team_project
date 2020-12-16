@@ -3,12 +3,12 @@
     <b-container>
       <div class="pt-5">
         <b-card class="m-auto" style="max-width: 25rem">
-          <h1>Sign Up</h1>
+          <h1>{{ $t('header.signup') }}</h1>
           <b-form class="mx-auto" style="max-width: 30rem">
             <b-input-group class="mt-4">
               <b-form-input
                 name="name"
-                placeholder="Name"
+                :placeholder="$t('placeholder.name')"
                 type="text"
                 v-model="$v.form.name.$model"
                 :state="validateState('name')"
@@ -17,7 +17,7 @@
 
             <b-input-group class="mt-3">
               <b-form-input
-                placeholder="Email address"
+                :placeholder="$t('placeholder.email')"
                 type="email"
                 v-model="$v.form.email.$model"
                 :state="validateState('email')"
@@ -28,7 +28,7 @@
               <b-form-input
                 id="password-input"
                 autocomplete="on"
-                placeholder="Password"
+                :placeholder="$t('placeholder.password')"
                 type="password"
                 v-model="$v.form.password.$model"
                 :state="validateState('password')"
@@ -44,7 +44,7 @@
 
             <b-input-group class="mt-3">
               <b-form-input
-                placeholder="Home Address"
+                :placeholder="$t('placeholder.homeAddress')"
                 type="text"
                 v-model="$v.form.homeAddress.$model"
                 :state="validateState('homeAddress')"
@@ -53,14 +53,14 @@
 
             <b-input-group class="mt-3">
               <b-form-input
-                placeholder="Telephone Number"
+                :placeholder="$t('placeholder.telephoneNum')"
                 type="number"
                 v-model="$v.form.telephoneNumber.$model"
                 :state="validateState('telephoneNumber')"
               ></b-form-input>
             </b-input-group>
 
-            <b-dropdown text="Areas Interested" block class="mt-3">
+            <b-dropdown :text="$t('etc.AI')" block class="mt-3">
               <b-form-group>
                 <b-form-checkbox-group
                   id="checkbox-group-1"
@@ -73,7 +73,7 @@
               </b-form-group>
             </b-dropdown>
 
-            <b-button variant="primary" class="mt-3"  @click="submit($event)">Sign up</b-button>
+            <b-button variant="primary" class="mt-3"  @click="submit($event)">{{ $t('header.signup') }}</b-button>
           </b-form>
         </b-card>
       </div>

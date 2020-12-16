@@ -1,16 +1,27 @@
 {
-    "message": "tere i18n !!",
+  "message": "tere i18n !!",
 
-    "header": {
-      "Findup": "Findup",
-      "home":"Avaleht",
-      "about": "Meist",
-      "login": "Logi sisse",
-      "signup": "Registreeri"
-    },
-    "about":{
-      "heading":"Tere tulemast liituma spordiväljaku rakendusega",
-      "text": "See rakendus on mõeldud neile, kes sooviksid leida oma hobipartnereid spordiväljakul. Kuigi seda rakendust saavad inimesed registreerida, kasutades e-posti ja parooli ning rääkides oma hobidest. Kui nad on sisse logitud, saavad nad liituda erinevate valdkondade meeskondadega, nad näevad meeskonna liikmeid ja saavad nendega ühendust võtta. See rakendus aitab inimestel luua uusi meeskondi ja teha omavahel koostööd, jagada uusi kogemusi ja veeta aega. Seda rakendust on vaja, sest igas riigis on nii palju rahvusvahelisi inimesi ja nad ei tea, kuhu nad saaksid mängima minna ning kuidas leida samade hobidega inimesi, kellega koos mängida, nii et see on nende jaoks väga tore platvorm."
+  "header": {
+    "Findup": "Findup",
+    "home":"Avaleht",
+    "about": "Meist",
+    "login": "Logi sisse",
+    "signup": "Registreeri"
+  },
+  "about":{
+    "heading":"Tere tulemast liituma spordiväljaku rakendusega",
+    "text": "See rakendus on mõeldud neile, kes sooviksid leida oma hobipartnereid spordiväljakul. Kuigi seda rakendust saavad inimesed registreerida, kasutades e-posti ja parooli ning rääkides oma hobidest. Kui nad on sisse logitud, saavad nad liituda erinevate valdkondade meeskondadega, nad näevad meeskonna liikmeid ja saavad nendega ühendust võtta. See rakendus aitab inimestel luua uusi meeskondi ja teha omavahel koostööd, jagada uusi kogemusi ja veeta aega. Seda rakendust on vaja, sest igas riigis on nii palju rahvusvahelisi inimesi ja nad ei tea, kuhu nad saaksid mängima minna ning kuidas leida samade hobidega inimesi, kellega koos mängida, nii et see on nende jaoks väga tore platvorm."
 
-    }
+  },
+  "placeholder":{
+    "search": "Otsing",
+    "name": "Nimi",
+    "email": "E-post",
+    "password": "Parool",
+    "homeAddress": "Kodu aadress",
+    "telephoneNum": "Telefoninumber"
+  },
+  "etc":{
+    "AI":"Huvitatud piirkonnad"
   }
+}

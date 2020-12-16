@@ -6,13 +6,13 @@
       <b-card class="mx-auto mt-4" style="max-width: 25rem;">
         
       <b-form class="mx-auto" style="max-width: 30rem">
-        <h1>Login</h1>
-        <b-alert :show="wrong" variant="danger"> Enter valid password and email</b-alert>
+        <h1>{{ $t('header.login') }}</h1>
+        <b-alert :show="wrong" variant="danger">Enter valid password and email</b-alert>
         <b-input-group class="mt-5">
-          <b-form-input placeholder="Email address" type="email" v-model="form.email"></b-form-input>
+          <b-form-input :placeholder="$t('placeholder.email')" type="email" v-model="form.email"></b-form-input>
           </b-input-group>
         <b-input-group class="mt-4">
-          <b-form-input placeholder="Password" type="password" v-model="form.password" autocomplete="on"></b-form-input>
+          <b-form-input :placeholder="$t('placeholder.password')" type="password" v-model="form.password" autocomplete="on"></b-form-input>
         </b-input-group>
 
         <b-button variant="primary" class="mt-5" @click="submit()">Login</b-button>
@@ -41,6 +41,17 @@ export default {
     validateState(name) {
       const { $dirty, $error } = this.$v.form[name];
       return $dirty ? !$error : null;
+    },
+    setLocale(locale) {
+      this.$i18n.locale = locale;
+      this.$router.push(
+        {
+          params: {
+            lang: locale,
+          },
+        },
+        () => {}
+      );
     },
     submit() {
       const formData = {

@@ -1,9 +1,11 @@
 <template>
   <div class="homeImage pt-5">
+    <input type="text" v-model="keyword" :placeholder="$t('placeholder.search')">
+    <br><br>
     <b-container>
       <b-card-group columns>
         <b-card
-          v-for="(game, index) in Games"
+          v-for="(game, index) in filteredgames"
           :key="index"
           :title="game.heading"
           :img-src="game.img"
@@ -32,7 +34,8 @@ export default {
   components: {},
   data() {
     return {
-      Games: [
+      keyword: '',
+      games: [
         {
           heading: 'Basketball',
           text:
@@ -85,6 +88,42 @@ export default {
       ],
     };
   },
+  methods: {
+    setLocale(locale) {
+      this.$i18n.locale = locale;
+      this.$router.push(
+        {
+          params: {
+            lang: locale,
+          },
+        },
+        () => {}
+      );
+    },
+
+  },
+  computed: {
+            filteredgames: function() {
+
+                var games = [];
+
+                for(var i in this.games) {
+
+                    var game = this.games[i];
+
+                    if(game.heading.indexOf(this.keyword) !== -1 ||
+                        game.text.indexOf(this.keyword) !== -1) {
+
+                        games.push(game);
+
+                    }
+
+                }
+
+                return games;
+
+            }
+        }
 };
 </script>
 <style  scoped>
@@ -104,3 +143,4 @@ export default {
     margin-bottom: 15px;
 }
 </style>
+
