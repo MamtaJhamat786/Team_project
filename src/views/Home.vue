@@ -1,9 +1,11 @@
 <template>
   <div class="homeImage pt-5">
+    <input type="text" v-model="keyword" :placeholder="$t('placeholder.search')">
+    <br><br>
     <b-container>
       <b-card-group columns>
         <b-card
-          v-for="(game, index) in Games"
+          v-for="(game, index) in filteredgames"
           :key="index"
           :title="game.heading"
           :img-src="game.img"
@@ -17,7 +19,7 @@
             {{ game.text }}
           </b-card-text>
 
-          <b-button href="#" variant="primary">{{ $t('info.teamMembersInfo') }}</b-button>
+          <b-button href="#" variant="primary">Team Members Info</b-button>
         </b-card>
       </b-card-group>
     </b-container>
@@ -32,58 +34,96 @@ export default {
   components: {},
   data() {
     return {
-      Games: [
+      keyword: '',
+      games: [
         {
-          heading: this.$t('fields.basketball'),
-          text: this.$t('fieldInfo.basketball'),
+          heading: 'Basketball',
+          text:
+            "Hello Basketball players, want to know about team members. Click Below.",
           img:
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt0Sh97iYcu0kTguhcsW_szWfzolqu1ynGeQ&usqp=CAU",
         },
         {
-          heading: this.$t('fields.badminton'),
+          heading: 'Badminton',
           text:
-            this.$t('fieldInfo.badminton'),
+            "Hello Badminton lovers, want to know about team members. Click Below.",
           img:
             "https://i2.wp.com/www.healthfitnessrevolution.com/wp-content/uploads/2014/03/badminton-1428047_1920-2.jpg?fit=1920%2C1280&ssl=1",
         },
         {
-          heading: this.$t('fields.football'),
+          heading: 'Football',
           text:
-            this.$t('fieldInfo.football'),
+            "Hello Football lovers, want to know about team members. Click Below.",
           img:
             "https://www.worcester.gov.uk/images/easyblog_shared/2019/b2ap3_large_Football---carousel.jpg",
         },
         {
-          heading: this.$t('fields.cricket'),
+          heading: 'Cricket',
           text:
-            this.$t('fieldInfo.cricket'),
+            "Hello Cricket lovers, want to know about team members. Click Below.",
           img:
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYHGznCkqXL8MbFAy8YrYgk3LWzPU9b95T5g&usqp=CAU",
         },
         {
-          heading: this.$t('fields.handball'),
+          heading: 'Handball',
           text:
-            this.$t('fieldInfo.handball'),
+            "Hello Handball lovers, want to know about team members. Click Below.",
           img:
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdz75gWK12Q2d_p3aahNW52yui2cc7USM1dg&usqp=CAU",
         },
         {
-          heading: this.$t('fields.vollyball'),
+          heading: 'Vollyball',
           text:
-            this.$t('fieldInfo.vollyball'),
+            "Hello Vollyball lovers, want to know about team members. Click Below.",
           img:
             "https://www.pe.com/wp-content/uploads/2019/11/xxxx_spo_ocr-l-volleyball-generic-stock-001-3.jpg",
         },
         {
-          heading: this.$t('fields.tabletennis'),
+          heading: 'Tabletenis',
           text:
-            this.$t('fieldInfo.tabletennis'),
+            "Hello Tabletennis lovers, want to know about team members. Click Below.",
           img:
             "https://www.southdownsleisure.co.uk/wp-content/uploads/2019/03/50_tabletennis-600x600.jpg",
         },
       ],
     };
   },
+  methods: {
+    setLocale(locale) {
+      this.$i18n.locale = locale;
+      this.$router.push(
+        {
+          params: {
+            lang: locale,
+          },
+        },
+        () => {}
+      );
+    },
+
+  },
+  computed: {
+            filteredgames: function() {
+
+                var games = [];
+
+                for(var i in this.games) {
+
+                    var game = this.games[i];
+
+                    if(game.heading.indexOf(this.keyword) !== -1 ||
+                        game.text.indexOf(this.keyword) !== -1) {
+
+                        games.push(game);
+
+                    }
+
+                }
+
+                return games;
+
+            }
+        }
 };
 </script>
 <style  scoped>
@@ -103,3 +143,4 @@ export default {
     margin-bottom: 15px;
 }
 </style>
+
