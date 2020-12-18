@@ -20,7 +20,7 @@
     "telephoneNum": "Telephone Number",
     "account": "Don't have an account? Sign Up", 
     "here": "here",
-    "teamMembersInfo": "Team members info"
+    "teamMembersInfo": "Join our team"
   },
   "fields":{
     "areasinterested": "Areas Interested",
@@ -39,6 +39,6 @@
     "cricket": "Hello Cricket lovers, want to know about team members. Click Below.",
     "handball":"Hello Handball lovers, want to know about team members. Click Below.",
     "vollyball":"Hello Vollyball lovers, want to know about team members. Click Below.",
-    "tabletennis": "Hello Tabletennis lovers, want to know about team members. Click Below."
+    "tabletennis":"Hello Tabletennis lovers, want to know about team members. Click Below."
   }
 }

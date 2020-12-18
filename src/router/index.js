@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Signup from '../views/Signup.vue'
 import About from '../views/About.vue'
 import Login from '../views/Login.vue'
+import Teams from '../views/Teams.vue'
 import i18n from '../i18n'
 
 Vue.use(VueRouter)
@@ -46,9 +47,13 @@ const router = new VueRouter({
         {
           path: 'login',
           name: 'Login',
-          component: Login
-          
-        }
+          component: Login   
+        },
+        {
+          path: 'teams',
+          name: 'Teams',
+          component: Teams
+        },
       ]
     }
 ]

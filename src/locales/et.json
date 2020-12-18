@@ -19,11 +19,11 @@
     "telephoneNum": "Telefoninumber",
     "account": "Kas teil pole kontot? Registreeri",
     "here" : "siin",
-    "teamMembersInfo": "Meeskonna liikmete info"
+    "teamMembersInfo": "Liitu meie meeskonnaga"
   },
   "fields":{
-    "areasinterested": "Alad, millest olete huvitatud.",
-    "basketball": "Korvpall",
+    "areasinterested":"Alad, millest olete huvitatud.",
+    "basketball":"Korvpall",
     "badminton":"Sulgpall",
     "football":"Jalgpall",
     "cricket":"Kriket",
