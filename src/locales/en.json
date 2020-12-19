@@ -6,7 +6,8 @@
     "home":"Home",
     "about": "About",
     "login": "Login",
-    "signup": "Signup"
+    "signup": "Signup",
+    "search":"Search"
   },
   "about":{
   "heading":"Welcome to join sport field application",
