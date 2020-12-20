@@ -5,7 +5,8 @@
     "home": "Avaleht",
     "about": "Meist",
     "login": "Logi sisse",
-    "signup": "Registreeri"
+    "signup": "Registreeri",
+    "search":"Otsing"
   },
   "about": {
     "heading": "Tere tulemast liituma spordiväljaku rakendusega",
