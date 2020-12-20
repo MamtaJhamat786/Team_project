@@ -50,7 +50,7 @@ const router = new VueRouter({
           component: Login   
         },
         {
-          path: 'teams',
+          path: 'teams/:game',
           name: 'Teams',
           component: Teams
         },

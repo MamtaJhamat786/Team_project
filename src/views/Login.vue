@@ -12,7 +12,7 @@
           <b-form-input :placeholder="$t('info.email')" type="email" v-model="form.email"></b-form-input>
           </b-input-group>
         <b-input-group class="mt-4">
-          <b-form-input :placeholder="$t('info.email')" type="password" v-model="form.password" autocomplete="on"></b-form-input>
+          <b-form-input :placeholder="$t('info.password')" type="password" v-model="form.password" autocomplete="on"></b-form-input>
         </b-input-group>
 
         <b-button variant="primary" class="mt-5" @click="submit()">{{ $t('header.login') }}</b-button>

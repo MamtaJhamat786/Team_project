@@ -17,7 +17,7 @@
             {{ game.text }}
           </b-card-text>
 
-          <b-button href="#" variant="primary">{{ $t('info.teamMembersInfo') }}</b-button>
+          <b-button :to="`/${$i18n.locale}/teams/`+ index " variant="primary">{{ $t('info.teamMembersInfo') }}</b-button>
         </b-card>
       </b-card-group>
     </b-container>

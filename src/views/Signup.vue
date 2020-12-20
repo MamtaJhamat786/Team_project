@@ -60,19 +60,6 @@
               ></b-form-input>
             </b-input-group>
 
-            <b-dropdown :text="$t('fields.areasinterested')" block class="mt-3">
-              <b-form-group>
-                <b-form-checkbox-group
-                  id="checkbox-group-1"
-                  v-model="$v.form.selected.$model"
-                  :state="validateState('selected')"
-                  :options="options"
-                  name="flavour-1"
-                  stacked
-                ></b-form-checkbox-group>
-              </b-form-group>
-            </b-dropdown>
-
             <b-button variant="primary" class="mt-3"  @click="submit($event)">{{ $t('header.signup') }} </b-button>
           </b-form>
         </b-card>
@@ -97,17 +84,7 @@ export default {
         password: "",
         homeAddress: "",
         telephoneNumber: "",
-        selected: [],
       },
-      options: [
-        { text: this.$t('fields.basketball'), value: "BasketBall" },
-        { text: this.$t('fields.badminton'), value: "Badminton" },
-        { text: this.$t('fields.football'), value: "Football" },
-        { text: this.$t('fields.cricket'), value: "Cricket" },
-        { text: this.$t('fields.handball'), value: "Handball" },
-        { text: this.$t('fields.vollyball'), value: "Vollyball" },
-        { text: this.$t('fields.tabletennis'), value: "Table tennis" }
-      ],
     };
   },
   validations: {
@@ -130,9 +107,6 @@ export default {
         numeric,
         required,
       },
-      selected: {
-        required,
-      },
     },
   },
 
@@ -153,7 +127,6 @@ export default {
           homeAddress: this.form.homeAddress,
           telephoneNumber: this.form.telephoneNumber,
           status: this.form.status,
-          selected: this.form.selected,
         };
         setTimeout(() => {
           this.dismissCountDown = this.dismissSecs;
@@ -161,7 +134,7 @@ export default {
         this.$store.dispatch("signup", formData);
         setTimeout(() => {
           this.$router.push("/");
-        }, 3000);
+        }, 5000);
         this.submitStatus = "OK";
       }
     },
