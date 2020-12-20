@@ -1,7 +1,10 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="light" id="header">
-      <b-navbar-brand :to="`/${$i18n.locale}/`">FindUp</b-navbar-brand>
+
+      <b-navbar-brand :to="`/${$i18n.locale}/`">
+         <img :src="image" class="logo"/>
+      </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -33,10 +36,13 @@
 </template>
 
 <script>
+import image from "../assets/Logo.jpg"
 export default {
   name: "Header",
   data() {
-    return {};
+    return {
+      image: image
+    };
   },
   methods: {
     setLocale(locale) {
@@ -58,5 +64,12 @@ export default {
 <style>
 #header {
   background-color: cornflowerblue;
+}
+.logo{
+   width: 50px;
+   position:initial;
+   height: 50px;
+  
+   
 }
 </style>

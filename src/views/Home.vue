@@ -1,5 +1,6 @@
 <template>
   <div class="homeImage pt-5">
+    <img src="image" />
     <b-container>
       <b-card-group columns>
         <b-card
@@ -26,6 +27,7 @@
 
 <script>
 // @ is an alias to /src
+
 
 export default {
   name: "Home",
