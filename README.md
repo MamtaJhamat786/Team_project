@@ -35,6 +35,13 @@ npm install
 npm run serve
 ```
 
+### Trouble shooting
+
+if npm run serve does not work please try the command below
+```
+rm -rf node_modules package-lock.json && npm install
+```
+
 ### Compiles and minifies for production
 ```
 npm run build
