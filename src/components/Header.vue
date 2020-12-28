@@ -11,7 +11,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item :to="`/${$i18n.locale}/`">{{ $t("header.home") }}</b-nav-item>
-          <b-nav-item :to="`/${$i18n.locale}/about`">{{
+          <b-nav-item :to="`/${$i18n.locale}/about`"> {{
             $t("header.about")
           }}</b-nav-item>
         </b-navbar-nav>
