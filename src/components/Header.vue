@@ -76,7 +76,6 @@ export default {
    width: 50px;
    position:initial;
    height: 50px;
-   
-    
+
 }
 </style>
