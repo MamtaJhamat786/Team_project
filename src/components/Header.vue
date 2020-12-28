@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="light" id="header">
+    <b-navbar toggleable="lg" type="dark" id="header">
 
       <b-navbar-brand :to="`/${$i18n.locale}/`">
          <img :src="image" class="logo"/>
@@ -18,6 +18,13 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
+
+          <b-nav-form>
+            <b-form-input size="sm" class="mr-sm-5" placeholder="Search"></b-form-input>
+          </b-nav-form>
+        
+
+        
             <b-nav-item :to="`/${$i18n.locale}/login`">{{
               $t("header.login")
             }}</b-nav-item>
@@ -63,13 +70,12 @@ export default {
 
 <style>
 #header {
-  background-color: cornflowerblue;
+  background-color: rgb(30, 32, 36);
 }
 .logo{
    width: 50px;
    position:initial;
    height: 50px;
   
-   
 }
 </style>
