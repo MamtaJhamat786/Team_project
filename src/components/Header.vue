@@ -9,7 +9,7 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
+          <b-navbar-nav class="abs-center-x" >
           <b-nav-item :to="`/${$i18n.locale}/`">{{ $t("header.home") }}</b-nav-item>
           <b-nav-item :to="`/${$i18n.locale}/about`">{{
             $t("header.about")
@@ -18,11 +18,17 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-            <b-nav-item :to="`/${$i18n.locale}/login`">{{
+            <b-nav-item v-if="!auth" :to="`/${$i18n.locale}/login`">{{
               $t("header.login")
             }}</b-nav-item>
-            <b-nav-item :to="`/${$i18n.locale}/signup`">{{
+            <b-nav-item v-if="auth" @click="logout()">{{
+              $t("header.logout")
+            }}</b-nav-item>
+            <b-nav-item v-if="!auth" :to="`/${$i18n.locale}/signup`">{{
               $t("header.signup")
+            }}</b-nav-item>
+            <b-nav-item v-if="auth" :to="`/${$i18n.locale}/profile`">{{
+              $t("header.profile")
             }}</b-nav-item>
 
           <b-nav-item-dropdown text="Lang" right>
@@ -57,7 +63,15 @@ export default {
       );
       localStorage.setItem("lang", this.$i18n.locale);
     },
+    logout() {
+      this.$store.dispatch('logout')
+    }
   },
+  computed: {
+  auth() {
+    return this.$store.getters.isAuth
+  }
+  }
 };
 </script>
 
@@ -67,9 +81,20 @@ export default {
 }
 .logo{
    width: 50px;
-   position:initial;
+   position:absolute;
    height: 50px;
-  
-   
+}
+
+@media screen and (max-width: 891px) {
+  .abs-center-x {
+    position: relative !important;
+}
+
+}
+
+.abs-center-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 </style>

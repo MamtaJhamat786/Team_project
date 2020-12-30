@@ -1,13 +1,15 @@
 {
-  "message": "hello i18n !!",
+  "message": "hello i18n!!",
 
   "header": {
     "findup": "Findup",
     "home":"Home",
     "about": "About",
     "login": "Login",
+    "logout": "Logout",
     "signup": "Signup",
-    "search":"Search"
+    "search":"Search",
+    "profile": "Profile"
   },
   "about":{
   "heading":"Welcome to join sport field application",
@@ -21,25 +23,16 @@
     "telephoneNum": "Telephone Number",
     "account": "Don't have an account? Sign Up", 
     "here": "here",
-    "teamMembersInfo": "Join our team"
+    "teamMembersInfo": "See all Teams"
   },
-  "fields":{
-    "areasinterested": "Areas Interested",
-    "basketball": "Basketball",
-    "badminton":"Badminton",
-    "football":"Football",
-    "cricket":"Cricket",
-    "handball":"Handball",
-    "vollyball":"Vollyball",
-    "tabletennis":"Table tennis"  
-  },
-  "fieldInfo":{
-    "basketball":"Hello Basketball lovers, want to know about team members. Click Below.",
-    "badminton":"Hello Badminton lovers, want to know about team members. Click Below.",
-    "football":"Hello Football lovers, want to know about team members. Click Below.",
-    "cricket": "Hello Cricket lovers, want to know about team members. Click Below.",
-    "handball":"Hello Handball lovers, want to know about team members. Click Below.",
-    "vollyball":"Hello Vollyball lovers, want to know about team members. Click Below.",
-    "tabletennis":"Hello Tabletennis lovers, want to know about team members. Click Below."
-  }
+  "fields":[
+    {"area":"Basketball", "info": "Hello Basketball lovers, want to know about team members. Click Below.", "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt0Sh97iYcu0kTguhcsW_szWfzolqu1ynGeQ&usqp=CAU" },
+      {"area":"Badminton", "info": "Hello Badminton lovers, want to know about team members. Click Below.", "img" : "https://i2.wp.com/www.healthfitnessrevolution.com/wp-content/uploads/2014/03/badminton-1428047_1920-2.jpg?fit=1920%2C1280&ssl=1"},
+      {"area":"Football", "info": "Hello Football lovers, want to know about team members. Click Below.", "img":"https://www.worcester.gov.uk/images/easyblog_shared/2019/b2ap3_large_Football---carousel.jpg" },
+      {"area":"Cricket", "info": "Hello Cricket lovers, want to know about team members. Click Below.", "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYHGznCkqXL8MbFAy8YrYgk3LWzPU9b95T5g&usqp=CAU"},
+     {"area":"Handball", "info": "Hello Handball lovers, want to know about team members. Click Below.", "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdz75gWK12Q2d_p3aahNW52yui2cc7USM1dg&usqp=CAU"},
+      {"area":"Vollyball", "info": "Hello Vollyball lovers, want to know about team members. Click Below.", "img": "https://www.pe.com/wp-content/uploads/2019/11/xxxx_spo_ocr-l-volleyball-generic-stock-001-3.jpg"},
+      {"area":"Table tennis", "info": "Hello Tabletennis lovers, want to know about team members. Click Below.", "img": "https://www.southdownsleisure.co.uk/wp-content/uploads/2019/03/50_tabletennis-600x600.jpg"}
+      
+    ]
 }

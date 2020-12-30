@@ -16,7 +16,7 @@
         </b-input-group>
 
         <b-button variant="primary" class="mt-5" @click="submit()">{{ $t('header.login') }}</b-button>
-      <p class=" mt-5">{{ $t('info.account') }}  <b-link to="/signup">{{ $t('info.here') }}</b-link>  </p>
+      <p class=" mt-5">{{ $t('info.account') }}  <b-link :to="`/${$i18n.locale}/signup`">{{ $t('info.here') }}</b-link>  </p>
      
       </b-form>
       </b-card>
