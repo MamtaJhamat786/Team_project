@@ -9,7 +9,7 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav class="abs-center-x" >
+          <b-navbar-nav class="center" >
           <b-nav-item :to="`/${$i18n.locale}/`">{{ $t("header.home") }}</b-nav-item>
           <b-nav-item :to="`/${$i18n.locale}/about`">{{
             $t("header.about")
@@ -86,13 +86,13 @@ export default {
 }
 
 @media screen and (max-width: 891px) {
-  .abs-center-x {
+  .center {
     position: relative !important;
 }
 
 }
 
-.abs-center-x {
+.center {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
