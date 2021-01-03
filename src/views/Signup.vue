@@ -75,7 +75,7 @@ export default {
 
   data() {
     return {
-      dismissSecs: 10,
+      dismissSecs: 2,
       dismissCountDown: 0,
       showDismissibleAlert: false,
       form: {
@@ -134,7 +134,7 @@ export default {
         this.$store.dispatch("signup", formData);
         setTimeout(() => {
           this.$router.push("/");
-        }, 5000);
+        }, 700);
         this.submitStatus = "OK";
       }
     },

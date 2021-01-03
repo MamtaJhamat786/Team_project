@@ -5,6 +5,7 @@ import Signup from '../views/Signup.vue'
 import About from '../views/About.vue'
 import Login from '../views/Login.vue'
 import Teams from '../views/Teams.vue'
+import Profile from '../views/Profile.vue'
 import i18n from '../i18n'
 
 Vue.use(VueRouter)
@@ -50,13 +51,41 @@ const router = new VueRouter({
           component: Login   
         },
         {
+          path: 'profile',
+          name: 'Profile',
+          component: Profile,
+          beforeEnter(to, from, next){
+            if(localStorage.getItem('token')){
+              next()
+            }
+            else{
+              next(`/${i18n.locale}/login`)
+            }
+          }
+        },
+        {
           path: 'teams/:game',
           name: 'Teams',
-          component: Teams
+          component: Teams,
+          beforeEnter(to, from, next){
+            if(localStorage.getItem('token')){
+              next()
+            }
+            else{
+              next(`/${i18n.locale}/login`)
+            }
+          }
         },
       ]
     }
-]
+],
+scrollBehavior (to, from, savedPosition) {
+  if (savedPosition) {
+    return savedPosition
+  } else {
+    return { x: 0, y: 0 }
+  }
+}
 })
 
 export default router
