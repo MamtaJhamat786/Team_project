@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" id="header">
+    <b-navbar toggleable="lg" type="light" id="header">
 
       <b-navbar-brand :to="`/${$i18n.locale}/`">
          <img :src="image" class="logo"/>
@@ -18,6 +18,7 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
+            <b-nav-item v-if="!auth" :to="`/${$i18n.locale}/login`">{{
               $t("header.login")
             }}</b-nav-item>
             <b-nav-item v-if="auth" @click="logout()">{{
@@ -76,11 +77,24 @@ export default {
 
 <style>
 #header {
-  background-color: rgb(30, 32, 36);
+  background-color: cornflowerblue;
 }
 .logo{
    width: 50px;
    position:absolute;
    height: 50px;
+}
 
+@media screen and (max-width: 891px) {
+  .center {
+    position: relative !important;
+}
+
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
 </style>
