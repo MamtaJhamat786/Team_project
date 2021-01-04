@@ -1,6 +1,8 @@
 <template>
-  <div class="vh-100 d-flex justify-content-center align-items-center">
-      <p v-for="(item, index) in data" :key="index" > {{ item.email }}, {{ item.name }}</p>
+  <div class="mt -10 d-flex justify-content-center align-items-center">
+    <b-card class="mt-5 ">
+    <p v-for="(item, index) in data" :key="index" > {{ item.email }},<br/> {{ item.name }}</p> 
+    </b-card>             
   </div>
 </template>
 
@@ -17,6 +19,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+p {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+}
 
 </style>

@@ -17,15 +17,15 @@ export default new Vuex.Store({
     loadedData: [],
     singleDetail: [],
     error: null,
-    teams: []
+    teams: [], 
+    // isLoggedIn:false
 
   },
   mutations: {
     teams(state, payload) {
       state.teams = payload
     },
-
-    authUser (state, userData) {
+      authUser (state, userData) {
       state.idToken = userData.token
       state.userId = userData.userId
       state.email = userData.email
@@ -42,7 +42,10 @@ export default new Vuex.Store({
     },
     loginError (state, payload) {
       state.error = payload
-    }
+    }, 
+    // setAuth(state, payload){
+    //   state.isLoggedin= payload.isAuth
+    // }
   },
   actions: {
     getTeams({commit}, teams) {
@@ -130,7 +133,16 @@ export default new Vuex.Store({
             error: e.status
           })
         })
+        
     },
+    // signin(context){
+    //   context.commit('setAuth', { isAuth:true });
+
+    // },
+    // signout(context){
+    //   context.commit('setAuth', { isAuth:false });
+
+    // },
   autoLogin({commit}) {
       const token = localStorage.getItem('token')
       if (!token) {
@@ -175,6 +187,6 @@ export default new Vuex.Store({
     },
     error(state) {
       return state.error !== null
-    }
+    },
   }
 })
