@@ -9,7 +9,7 @@
       <b-row>
         <b-col>
           <div>
-            <b-button class="btn-xl" variant="primary" id="show-btn" v-if="auth" @click="showModal" mt-3>Create team</b-button>
+            <b-button class="btn-xl" variant="primary" id="show-btn" v-if="auth" @click="showModal" mt-3>{{ $t('info.createteam') }}</b-button>
             <br />
             <br />
             <br />
@@ -34,7 +34,7 @@
                 <b-list-group-item v-for="(member, index) in team.teamMembers" :key="index">{{ member }}</b-list-group-item>
               </b-list-group>
               <br />
-              <b-button variant="primary" @click="joinTeam(team.id)">Join our team</b-button>
+              <b-button variant="primary" @click="joinTeam(team.id)">{{ $t('info.jointeam') }}</b-button>
             </b-list-group-item>
           </b-list-group>
         </b-col>
@@ -53,7 +53,7 @@
                   class="mt-3"
                   variant="primary"
                   @click="createTeam"
-                  >Create</b-button
+                  >{{ $t('info.create') }}</b-button
                 >
               </b-modal>
             </div>
