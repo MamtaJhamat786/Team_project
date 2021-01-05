@@ -43,11 +43,11 @@
     <div>   
               <b-modal
                 ref="my-modal"
+                :title="$t('info.createNewTeam')"
                 hide-footer
-                title="Create New Team"
               >
               <b-input-group class="mt-2">
-                <b-form-input  type="text" placeholder="Team Name" v-model="team"></b-form-input>
+                <b-form-input  type="text" :placeholder="$t('info.teamName')" v-model="team"></b-form-input>
               </b-input-group>
                 <b-button
                   class="mt-3"

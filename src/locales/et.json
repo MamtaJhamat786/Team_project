@@ -26,7 +26,9 @@
     "teamMembersInfo": "Liitu meie meeskonnaga",
     "createteam": "Loo meeskond",
     "create": "Looma",
-    "jointeam": "Liitu meeskonnaga"
+    "jointeam": "Liitu meeskonnaga",
+    "createNewTeam": "Loo uus meeskond",
+    "teamName": "Meeskonna Nimi"
   },
   "fields":[
   {"area":"Korvpall", "info": "Tere korvpallisõbrad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool", "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt0Sh97iYcu0kTguhcsW_szWfzolqu1ynGeQ&usqp=CAU" },
