@@ -3,134 +3,137 @@
     <b-container>
       <b-row>
         <b-col>
+        <h1>{{ $t('fields.' + [this.$route.params.game] + '.area') }}</h1>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
           <div>
-          <b-button class="btn-xl"  variant="primary" mt-3 @click="newTeam" >Create team</b-button>
-          <br>
-          <br>
-          <br>
+            <b-button class="btn-xl" variant="primary" id="show-btn" v-if="auth" @click="showModal" mt-3>Create team</b-button>
+            <br />
+            <br />
+            <br />
           </div>
-          <b-list-group >
+          <b-list-group>
             <b-list-group-item
-              v-for="(team, index) in games[this.$route.params.game]"
+              v-for="(team, index) in teams.slice().reverse()"
               :key="index"
               class="mt-3"
             >
               <div class="d-flex w-100 justify-content-between">
                 <p>{{ index + 1 }}</p>
-                <h5 class="mb-1">{{ team.heading }}</h5>
-                <b-badge class="align-self-center" variant="primary" pill >14</b-badge>
+                <h5 class="mb-1">{{ team.teamName }}</h5>
+                <b-badge v-if="team.teamMembers" class="align-self-center" variant="primary" pill
+              >{{ team.teamMembers.length + 1  }}</b-badge
+                >
+                <b-badge v-else class="align-self-center" variant="danger" pill>1</b-badge>
               </div>
 
               <b-list-group>
-                <b-list-group-item>Kazu</b-list-group-item>
-                <b-list-group-item>Ursel</b-list-group-item>
-                <b-list-group-item>Kaur</b-list-group-item>
+                <b-list-group-item variant="warning">{{ team.teamCreator }}</b-list-group-item>
+                <b-list-group-item v-for="(member, index) in team.teamMembers" :key="index">{{ member }}</b-list-group-item>
               </b-list-group>
               <br />
-              <b-button variant="primary">Join our team</b-button>
+              <b-button variant="primary" @click="joinTeam(team.id)">Join our team</b-button>
             </b-list-group-item>
           </b-list-group>
         </b-col>
       </b-row>
     </b-container>
+    <div>   
+              <b-modal
+                ref="my-modal"
+                hide-footer
+                title="Create New Team"
+              >
+              <b-input-group class="mt-2">
+                <b-form-input  type="text" placeholder="Team Name" v-model="team"></b-form-input>
+              </b-input-group>
+                <b-button
+                  class="mt-3"
+                  variant="primary"
+                  @click="createTeam"
+                  >Create</b-button
+                >
+              </b-modal>
+            </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "Home",
   components: {},
   data() {
     return {
-      games: {
-        0: [
-          {
-            heading: "Lions Team",
-          },
-          {
-            heading: "Tiger Team",
-          },
-          {
-            heading: "Smooth Team",
-          },
-        ],
-        1: [
-          {
-            heading: "Indian Team",
-          },
-          {
-            heading: "Inter Team",
-          },
-          {
-            heading: "Lovely Team",
-          },
-        ],
-        2: [
-          {
-            heading: "Taj Team",
-          },
-          {
-            heading: "Kaur Team",
-          },
-          {
-            heading: "Raj Team",
-          },
-        ],
-        3: [
-          {
-            heading: "super Team",
-          },
-          {
-            heading: "Nimrat Team",
-          },
-          {
-            heading: "BJ Team",
-          },
-        ],
-        4: [
-          {
-            heading: "Hari Team",
-          },
-          {
-            heading: "Tech Team",
-          },
-          {
-            heading: "Goodwin Team",
-          },
-        ],
-        5: [
-          {
-            heading: "Full Team",
-          },
-          {
-            heading: "Entertain Team",
-          },
-          {
-            heading: "Lok Team",
-          },
-        ],
-        6: [
-          {
-            heading: "Khushi Team",
-          },
-          {
-            heading: "Natak Team",
-          },
-          {
-            heading: "AJ Team",
-          },
-        ],
-      },
+      team: '',
+      teams: []
     };
   },
-  methods:{
-    newTeam(){
-      
-
-    }
-
-
+  methods: {
+    showModal() {
+      this.$refs["my-modal"].show();
+    },
+    createTeam(){
+      console.log(this.$store.state.loadedData[0].name)
+      axios.post('https://finduppartner.firebaseio.com/teams.json', {teamName : this.team, teamField : this.$route.params.game, teamCreator: this.$store.state.loadedData[0].name, teamMembers: [] })
+      .then((result) => {
+        this.$refs["my-modal"].hide();
+        this.team = ''
+        this.getTeams()
+      })
+      .catch(e => console.log(e))
+  },
+  getTeams() {
+    axios.get('https://finduppartner.firebaseio.com/teams.json')
+    .then((res) => {
+      const data = res.data
+      const teams = []
+        for (let key in data) {
+          const team = data[key]
+          team.id = key
+          teams.push(team)
+        }
+      var match = teams.filter(match => match.teamField === this.$route.params.game)
+      this.teams = match
+    } )
+    .catch(e => console.log(e))
+  },
+ joinTeam(id) {
+     let name = this.$store.state.loadedData[0].name
+     axios.get('https://finduppartner.firebaseio.com/teams/'+ id + '/teamMembers.json')
+     .then((res) => {
+       if (res.data) {
+         var array = res.data
+         array.push(name)
+         axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: array } )
+    .then((res) => {
+      console.log(res)
+      this.getTeams()
+    })
+    .catch(e => console.log(e))
+       } else if (!res.data) {
+         axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: [name] } )
+    .then((res) => {
+      console.log(res)
+      this.getTeams()
+    })
+    .catch(e => console.log(e))
+       }
+     })
+     .catch(e => console.log(e))
   }
+},
+ computed: {
+  auth() {
+    return this.$store.getters.isAuth 
+  }
+  },
+created()  {
+  this.getTeams()
+  this.$store.dispatch('fetchData')
+}
 };
 </script>
 <style  scoped>
@@ -150,10 +153,10 @@ export default {
   margin-bottom: 15px;
 }
 .btn-xl {
-    padding: 10px 20px;
-    font-size: 20px;
-    border-radius: 10px;
-    float: right;
-    margin-top: 3px;
+  padding: 10px 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  float: right;
+  margin-top: 3px;
 }
 </style>

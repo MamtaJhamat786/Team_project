@@ -9,10 +9,13 @@
 import Header from './components/Header.vue'
 export default {
   components: {
-    beforeCreate: function() {
+    Header
+  },
+  beforeCreate: function() {
         document.body.className = 'intro';
     },
-    Header
+  created () {
+    this.$store.dispatch('autoLogin')
   }
 }
 </script>

@@ -5,11 +5,14 @@
     "home": "Avaleht",
     "about": "Meist",
     "login": "Logi sisse",
+    "logout": "Logi välja",
     "signup": "Registreeri",
-    "search":"Otsing"
+    "search":"Otsing",
+    "profile": "Profiil"
   },
   "about": {
     "heading": "Tere tulemast liituma spordiväljaku rakendusega",
+    
     "text": "See rakendus on mõeldud neile, kes sooviksid leida oma hobipartnereid spordiväljakul. Kuigi seda rakendust saavad inimesed registreerida, kasutades e-posti ja parooli ning rääkides oma hobidest. Kui nad on sisse logitud, saavad nad liituda erinevate valdkondade meeskondadega, nad näevad meeskonna liikmeid ja saavad nendega ühendust võtta. See rakendus aitab inimestel luua uusi meeskondi ja teha omavahel koostööd, jagada uusi kogemusi ja veeta aega. Seda rakendust on vaja, sest igas riigis on nii palju rahvusvahelisi inimesi ja nad ei tea, kuhu nad saaksid mängima minna ning kuidas leida samade hobidega inimesi, kellega koos mängida, nii et see on nende jaoks väga tore platvorm."
   },
   "info": {
@@ -22,24 +25,14 @@
     "here" : "siin",
     "teamMembersInfo": "Liitu meie meeskonnaga"
   },
-  "fields":{
-    "areasinterested":"Alad, millest olete huvitatud.",
-    "basketball":"Korvpall",
-    "badminton":"Sulgpall",
-    "football":"Jalgpall",
-    "cricket":"Kriket",
-    "handball":"Käsipall",
-    "vollyball":"Võrkpall",
-    "tabletennis":"Lauatennis"
+  "fields":[
+  {"area":"Korvpall", "info": "Tere korvpallisõbrad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool", "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt0Sh97iYcu0kTguhcsW_szWfzolqu1ynGeQ&usqp=CAU" },
+    {"area":"Sulgpall", "info": "Tere sulgpalli armastajad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool.", "img" : "https://i2.wp.com/www.healthfitnessrevolution.com/wp-content/uploads/2014/03/badminton-1428047_1920-2.jpg?fit=1920%2C1280&ssl=1"},
+    {"area":"Jalgpall", "info": "Tere, jalgpallisõbrad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool", "img":"https://www.worcester.gov.uk/images/easyblog_shared/2019/b2ap3_large_Football---carousel.jpg" },
+    {"area":"Kriket", "info": "Tere, kriketisõbrad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool.", "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYHGznCkqXL8MbFAy8YrYgk3LWzPU9b95T5g&usqp=CAU"},
+   {"area":"Käsipall", "info": "Tere, käsipalli armastajad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool.", "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdz75gWK12Q2d_p3aahNW52yui2cc7USM1dg&usqp=CAU"},
+    {"area":"Võrkpall", "info": "Tere, võrkpallihuvilised, tahate meeskonnaliikmete kohta teada. Klõpsake allpool.", "img": "https://www.pe.com/wp-content/uploads/2019/11/xxxx_spo_ocr-l-volleyball-generic-stock-001-3.jpg"},
+    {"area":"Lauatennis", "info": "Tere, lauatennise austajad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool.", "img": "https://www.southdownsleisure.co.uk/wp-content/uploads/2019/03/50_tabletennis-600x600.jpg"}
     
-  },
-  "fieldInfo":{
-    "basketball":"Tere korvpallisõbrad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool",
-    "badminton":"Tere sulgpalli armastajad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool.",
-    "football":"Tere, jalgpallisõbrad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool",
-    "cricket": "Tere, kriketisõbrad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool.",
-    "handball":"Tere, käsipalli armastajad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool.",
-    "vollyball":"Tere, võrkpallihuvilised, tahate meeskonnaliikmete kohta teada. Klõpsake allpool.",
-    "tabletennis": "Tere, lauatennise austajad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool."
-  }
+  ]
 }

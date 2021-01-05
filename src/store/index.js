@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import Vuelidate from 'vuelidate'
 import router from '../router'
+import i18n from '../i18n'
 
 Vue.use(Vuex)
 Vue.use(Vuelidate)
@@ -12,15 +13,22 @@ export default new Vuex.Store({
     index: '',
     idToken: null,
     userId: null,
+    email: null,
     loadedData: [],
     singleDetail: [],
-    error: null
+    error: null,
+    teams: [], 
+    // isLoggedIn:false
 
   },
   mutations: {
-    authUser (state, userData) {
+    teams(state, payload) {
+      state.teams = payload
+    },
+      authUser (state, userData) {
       state.idToken = userData.token
       state.userId = userData.userId
+      state.email = userData.email
     },
     data (state, payload) {
       state.loadedData = payload
@@ -34,9 +42,21 @@ export default new Vuex.Store({
     },
     loginError (state, payload) {
       state.error = payload
-    }
+    }, 
+    // setAuth(state, payload){
+    //   state.isLoggedin= payload.isAuth
+    // }
   },
   actions: {
+    getTeams({commit}, teams) {
+      axios.get('https://finduppartner.firebaseio.com/teams.json')
+      .then(result => {
+        console.log(result)
+        commit('teams')
+      })
+      .catch(e => {console.log(e)})
+    },
+
     signup({commit}, authData) {
       axios
         .post(
@@ -51,8 +71,13 @@ export default new Vuex.Store({
           console.log(result)
           commit('authUser', {
             token: result.data.idToken,
-            userId: result.data.localId
+            userId: result.data.localId,
+            email: result.data.email
+            
         })
+          localStorage.setItem('token', result.data.idToken)
+          localStorage.setItem('localId', result.data.localId)
+          localStorage.setItem('email', result.data.email)
       axios.post('https://finduppartner.firebaseio.com/user.json', authData)
         .then((result) => {
             console.log(result);
@@ -79,45 +104,75 @@ export default new Vuex.Store({
     },
     logout({commit}) {
       commit('clearToken')
-      router.replace('/login')
+      localStorage.removeItem('token')
+      localStorage.removeItem('localId')
+      localStorage.removeItem('email')
     },
     login({ commit }, authData) {
       axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAYRWDRm0ys_8INm85J-OB7stAoMsNEuSE',
         {
           email: authData.email,
           password: authData.password,
-          returnSecureToken: true
+          returnSecureToken: true,
 
         }).then(result => {
           console.log(result)
           commit('authUser', {
             token: result.data.idToken,
-            userId: result.data.localId
+            userId: result.data.localId,
+            email: result.data.email
           })
           this.state.error = null
-          router.replace('/')
+          router.replace(`/${i18n.locale}/`)
+          localStorage.setItem('token', result.data.idToken)
+          localStorage.setItem('localId', result.data.localId)
+          localStorage.setItem('email', result.data.email)
         })
-        .catch(error => {
+        .catch(e => {
           commit('loginError', {
-            error: error.response.data.error
+            error: e.status
           })
         })
+        
     },
-  fetchData({ commit }) {
+    // signin(context){
+    //   context.commit('setAuth', { isAuth:true });
+
+    // },
+    // signout(context){
+    //   context.commit('setAuth', { isAuth:false });
+
+    // },
+  autoLogin({commit}) {
+      const token = localStorage.getItem('token')
+      if (!token) {
+        return
+      }
+      const userId = localStorage.getItem('localId')
+      const email = localStorage.getItem('email')
+      commit('authUser', {
+        token : token,
+        userId : userId,
+        email : email
+      })
+  },
+  fetchData({ commit, state }) {
+    if (!state.idToken) {
+      return
+    }
     axios.get('https://finduppartner.firebaseio.com/user.json')
       .then((result) => {
-        commit('data', result.data)
+        const data = result.data
+        const users = []
+        for (let key in data) {
+          const user = data[key]
+          user.id = key
+          users.push(user)
+        }
+        var match = users.filter(match => match.email === state.email)
+        commit('data', match)
       })
       .catch(e => console.log(e))
-  },
-  singleView({ commit, state }) {
-    const views = []
-    for (let key in state.loadedData) {
-      const view = state.loadedData[key]
-      view.id = key
-      views.push(view)
-    }
-    commit('single', views[state.index])
   }
 }, 
   getters: {
@@ -132,6 +187,6 @@ export default new Vuex.Store({
     },
     error(state) {
       return state.error !== null
-    }
+    },
   }
 })
