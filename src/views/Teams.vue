@@ -34,7 +34,8 @@
                 <b-list-group-item v-for="(member, index) in team.teamMembers" :key="index">{{ member }}</b-list-group-item>
               </b-list-group>
               <br />
-              <b-button variant="primary" @click="joinTeam(team.id)">{{ $t('info.jointeam') }}</b-button>
+              <b-button class="centered" variant="primary" @click="joinTeam(team.id)">{{ $t('info.jointeam') }}</b-button>
+              <b-button class="left" variant="secondary" @click="leftTeam(team.id)">{{ $t('Leave this team') }}</b-button>
             </b-list-group-item>
           </b-list-group>
         </b-col>
@@ -100,6 +101,11 @@ export default {
     } )
     .catch(e => console.log(e))
   },
+  leftTeam(id) {
+    let name = this.$store.state.loadedData[0].name
+    axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: [name] } )
+    //axios.put('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: array } )
+  },
  joinTeam(id) {
      let name = this.$store.state.loadedData[0].name
      axios.get('https://finduppartner.firebaseio.com/teams/'+ id + '/teamMembers.json')
@@ -158,5 +164,13 @@ created()  {
   border-radius: 10px;
   float: right;
   margin-top: 3px;
+}
+.left {
+  padding: 8px 12px;
+  font-size: 15px;
+  
+  float: right;
+  margin-top: 3px;
+}
 }
 </style>
