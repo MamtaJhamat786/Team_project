@@ -83,6 +83,7 @@ export default {
    width: 50px;
    position:absolute;
    height: 50px;
+   margin:-1.8% 0%;  
 }
 
 @media screen and (max-width: 891px) {
