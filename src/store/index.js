@@ -18,8 +18,8 @@ export default new Vuex.Store({
     singleDetail: [],
     error: null,
     teams: [], 
-    // isLoggedIn:false
-
+    friendEmail: '',
+    friendProfile: null
   },
   mutations: {
     teams(state, payload) {
@@ -43,11 +43,37 @@ export default new Vuex.Store({
     loginError (state, payload) {
       state.error = payload
     }, 
-    // setAuth(state, payload){
-    //   state.isLoggedin= payload.isAuth
-    // }
+    setFriendEmail(state, email){
+      state.friendEmail = email
+    },
+    setFriendProfile(state, profile) {
+      state.friendProfile = profile
+    }
   },
   actions: {
+    getFriendProfile({commit, state}) {
+      axios.get('https://finduppartner.firebaseio.com/user.json')
+      .then((result) => {
+        const data = result.data
+        const users = []
+        for (let key in data) {
+          const user = data[key]
+          user.id = key
+          users.push(user)
+        }
+        let friendEmail = state.friendEmail === '' ? localStorage.getItem('friendEmail') : state.friendEmail
+        var match = users.filter(match => match.email === friendEmail)
+        return match
+      })
+      .then(match => {
+        commit('setFriendProfile', match[0])
+      })
+      .catch(e => console.log(e))
+    },
+    setFriendEmail({commit}, email) {
+       localStorage.setItem('friendEmail', email)
+        commit('setFriendEmail', email)
+    },
     getTeams({commit}, teams) {
       axios.get('https://finduppartner.firebaseio.com/teams.json')
       .then(result => {
@@ -135,14 +161,6 @@ export default new Vuex.Store({
         })
         
     },
-    // signin(context){
-    //   context.commit('setAuth', { isAuth:true });
-
-    // },
-    // signout(context){
-    //   context.commit('setAuth', { isAuth:false });
-
-    // },
   autoLogin({commit}) {
       const token = localStorage.getItem('token')
       if (!token) {
@@ -188,5 +206,11 @@ export default new Vuex.Store({
     error(state) {
       return state.error !== null
     },
+    friendProfile(state) {
+      return state.friendProfile
+    },
+    loadedData(state) {
+      return state.loadedData[0]
+    }
   }
 })

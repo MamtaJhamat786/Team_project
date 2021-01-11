@@ -6,6 +6,7 @@ import About from '../views/About.vue'
 import Login from '../views/Login.vue'
 import Teams from '../views/Teams.vue'
 import Profile from '../views/Profile.vue'
+import FriendProfile from '../views/FriendProfile.vue'
 import i18n from '../i18n'
 
 Vue.use(VueRouter)
@@ -76,6 +77,20 @@ const router = new VueRouter({
             }
           }
         },
+        {
+          path: 'friend/:name',
+          name: 'FriendProfile',
+          component: FriendProfile,
+          beforeEnter(to, from, next){
+            if(localStorage.getItem('token')){
+              next()
+            }
+            else{
+              next(`/${i18n.locale}/login`)
+            }
+          }
+        }
+       
       ]
     }
 ],
