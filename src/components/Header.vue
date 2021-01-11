@@ -86,7 +86,7 @@ export default {
    position: relative;
 }
 
-@media screen and (max-width: 891px) {
+@media screen and (max-width: 900px) {
   .center {
     position: relative !important;
 }

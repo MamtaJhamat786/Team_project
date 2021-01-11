@@ -87,7 +87,7 @@
             v-model="team"
           ></b-form-input>
         </b-input-group>
-        <b-button class="mt-3" variant="primary" @click="createTeam">{{
+        <b-button class="mt-3" variant="primary" @click="createTeam(loadedData)">{{
           $t("info.create")
         }}</b-button>
       </b-modal>
@@ -113,9 +113,9 @@ export default {
     showModal() {
       this.$refs["my-modal"].show();
     },
-    createTeam(){
-      console.log(this.$store.state.loadedData[0].name)
-      axios.post('https://finduppartner.firebaseio.com/teams.json', {teamName : this.team, teamField : this.$route.params.game, teamCreator: this.$store.state.loadedData[0].name, teamMembers: [] })
+    createTeam(loadedData ){
+      console.log()
+      axios.post('https://finduppartner.firebaseio.com/teams.json', {teamName : this.team, teamField : this.$route.params.game, teamCreator: this.loadedData.name, teamMembers: [] })
       .then((result) => {
         this.$refs["my-modal"].hide();
         this.team = ''
