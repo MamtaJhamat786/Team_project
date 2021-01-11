@@ -3,13 +3,21 @@
     <b-container>
       <b-row>
         <b-col>
-        <h1>{{ $t('fields.' + [this.$route.params.game] + '.area') }}</h1>
+          <h1>{{ $t("fields." + [this.$route.params.game] + ".area") }}</h1>
         </b-col>
       </b-row>
       <b-row>
         <b-col>
           <div>
-            <b-button class="btn-xl" variant="primary" id="show-btn" v-if="auth" @click="showModal" mt-3>{{ $t('info.createteam') }}</b-button>
+            <b-button
+              class="btn-xl"
+              variant="primary"
+              id="show-btn"
+              v-if="auth"
+              @click="showModal"
+              mt-3
+              >{{ $t("info.createteam") }}</b-button
+            >
             <br />
             <br />
             <br />
@@ -23,44 +31,67 @@
               <div class="d-flex w-100 justify-content-between">
                 <p>{{ index + 1 }}</p>
                 <h5 class="mb-1">{{ team.teamName }}</h5>
-                <b-badge v-if="team.teamMembers" class="align-self-center" variant="primary" pill
-              >{{ team.teamMembers.length + 1  }}</b-badge
+                <b-badge
+                  v-if="team.teamMembers"
+                  class="align-self-center"
+                  variant="primary"
+                  pill
+                  >{{ team.teamMembers.length + 1 }}</b-badge
                 >
-                <b-badge v-else class="align-self-center" variant="danger" pill>1</b-badge>
+                <b-badge v-else class="align-self-center" variant="danger" pill
+                  >1</b-badge
+                >
               </div>
 
               <b-list-group>
-                <b-list-group-item variant="warning">{{ team.teamCreator }}</b-list-group-item>
-                <b-list-group-item v-for="(member, index) in team.teamMembers" :key="index">{{ member }}
-                  <b-button class="left" variant="success" to="`/${$i18n.locale}/about`" >{{ $t('Profile') }}</b-button>
-                  
+                <b-list-group-item variant="warning">{{
+                  team.teamCreator
+                }}</b-list-group-item>
+                <b-list-group-item
+                  v-for="(member, index) in team.teamMembers"
+                  :key="index"
+                  >{{ member.name }}
+                  <b-button
+                    class="left"
+                    variant="success"
+                    @click="storeFriendEmail(member.email)"
+                    :to="`/${$i18n.locale}/friend/${member.name}`"
+                    >{{ $t("Profile") }}</b-button
+                  >
                 </b-list-group-item>
               </b-list-group>
               <br />
-              <b-button class="center" variant="primary" @click="joinTeam(team.id)">{{ $t('info.jointeam') }}</b-button>
-              <b-button class="left" variant="secondary" @click="leftTeam(team.id)">{{ $t('Leave this team') }}</b-button>
+              <b-button
+                class="center"
+                variant="primary"
+                @click="joinTeam(team.id, loadedData.name, loadedData.email)"
+                >{{ $t("info.jointeam") }}</b-button
+              >
+              <b-button
+                class="left"
+                variant="secondary"
+                @click="leftTeam(team.id)"
+                >{{ $t("Leave this team") }}</b-button
+              >
             </b-list-group-item>
           </b-list-group>
         </b-col>
       </b-row>
     </b-container>
-    <div>   
-              <b-modal
-                ref="my-modal"
-                :title="$t('info.createNewTeam')"
-                hide-footer
-              >
-              <b-input-group class="mt-2">
-                <b-form-input  type="text" :placeholder="$t('info.teamName')" v-model="team"></b-form-input>
-              </b-input-group>
-                <b-button
-                  class="mt-3"
-                  variant="primary"
-                  @click="createTeam"
-                  >{{ $t('info.create') }}</b-button
-                >
-              </b-modal>
-            </div>
+    <div>
+      <b-modal ref="my-modal" :title="$t('info.createNewTeam')" hide-footer>
+        <b-input-group class="mt-2">
+          <b-form-input
+            type="text"
+            :placeholder="$t('info.teamName')"
+            v-model="team"
+          ></b-form-input>
+        </b-input-group>
+        <b-button class="mt-3" variant="primary" @click="createTeam">{{
+          $t("info.create")
+        }}</b-button>
+      </b-modal>
+    </div>
   </div>
 </template>
 
@@ -76,9 +107,9 @@ export default {
     };
   },
   methods: {
-    //toProfil(pathz) {
-      //this.$router.push({ path: `/${this.$i18n.locale}/teams/${pathz}` })
-    //},
+    storeFriendEmail(email){
+        this.$store.dispatch('setFriendEmail', email)
+    },
     showModal() {
       this.$refs["my-modal"].show();
     },
@@ -112,13 +143,16 @@ export default {
     axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: [name] } )
     //axios.put('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: array } )
   },
- joinTeam(id) {
-     let name = this.$store.state.loadedData[0].name
+
+ joinTeam(id, name , email) {
+     let teamMember = {name : name, email : email} 
+    
      axios.get('https://finduppartner.firebaseio.com/teams/'+ id + '/teamMembers.json')
      .then((res) => {
+       console.log(res)
        if (res.data) {
          var array = res.data
-         array.push(name)
+         array.push(teamMember)
          axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: array } )
     .then((res) => {
       console.log(res)
@@ -126,7 +160,7 @@ export default {
     })
     .catch(e => console.log(e))
        } else if (!res.data) {
-         axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: [name] } )
+         axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: [{name: name, email: email}] } )
     .then((res) => {
       console.log(res)
       this.getTeams()
@@ -140,6 +174,9 @@ export default {
  computed: {
   auth() {
     return this.$store.getters.isAuth 
+  },
+  loadedData(){
+    return this.$store.getters.loadedData
   }
   },
 created()  {
