@@ -46,7 +46,20 @@
               <b-list-group>
                 <b-list-group-item variant="warning">{{
                   team.teamCreator
-                }}</b-list-group-item>
+                }}
+                   :  
+                {{
+                  team.teamCreatorEmail
+                }}
+
+                <b-button 
+                class="left" variant="danger" 
+                @click="deleteTeam(team.id, loadedData.name, loadedData.email)"
+                >{{ $t('deleteTeam') }}</b-button
+              >
+              
+                
+                </b-list-group-item>
                 <b-list-group-item
                   v-for="(member, index) in team.teamMembers"
                   :key="index"
@@ -56,8 +69,9 @@
                     variant="success"
                     @click="storeFriendEmail(member.email)"
                     :to="`/${$i18n.locale}/friend/${member.name}`"
-                    >{{ $t("Profile") }}</b-button
+                    >{{ $t("profile") }}</b-button
                   >
+                  
                 </b-list-group-item>
               </b-list-group>
               <br />
@@ -71,8 +85,9 @@
                 class="left"
                 variant="secondary"
                 @click="leftTeam(team.id)"
-                >{{ $t("Leave this team") }}</b-button
+                >{{ $t("leaveTeam") }}</b-button
               >
+              
             </b-list-group-item>
           </b-list-group>
         </b-col>
@@ -115,7 +130,12 @@ export default {
     },
     createTeam(){
       console.log(this.$store.state.loadedData[0].name)
-      axios.post('https://finduppartner.firebaseio.com/teams.json', {teamName : this.team, teamField : this.$route.params.game, teamCreator: this.$store.state.loadedData[0].name, teamMembers: [] })
+      axios.post('https://finduppartner.firebaseio.com/teams.json', {
+        teamName : this.team, 
+        teamField : this.$route.params.game, 
+        teamCreator: this.$store.state.loadedData[0].name, 
+        teamCreatorEmail: this.$store.state.loadedData[0].email,
+        teamMembers: [] })
       .then((result) => {
         this.$refs["my-modal"].hide();
         this.team = ''
@@ -141,7 +161,26 @@ export default {
   leftTeam(id) {
     let name = this.$store.state.loadedData[0].name
     axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: [name] } )
-    //axios.put('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: array } )
+    //axios.delete('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: [name] } )
+    //axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: array } )
+    .then((result) => {
+        this.$refs["my-modal"].hide();
+        this.team = ''
+        this.getTeams()
+      })
+      .catch(e => console.log(e))
+      axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: array } )
+  },
+  deleteTeam(id,email) {
+    let name = this.$store.state.loadedData[0].name
+    axios.delete('https://finduppartner.firebaseio.com/teams/'+ id + '.json')
+    //axios.get('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: array } )
+   .then((result) => {
+        this.$refs["my-modal"].hide();
+        this.team = ''
+        this.getTeams()
+      })
+      .catch(e => console.log(e))
   },
 
  joinTeam(id, name , email) {
@@ -169,7 +208,38 @@ export default {
        }
      })
      .catch(e => console.log(e))
+  },
+
+
+  leaveTeam(id, name , email) {
+     let teamMember = {name : name, email : email} 
+    
+     axios.get('https://finduppartner.firebaseio.com/teams/'+ id + '/teamMembers.json')
+     .then((res) => {
+       console.log(res)
+       if (res.data) {
+         var array = res.data
+         array.push(teamMember)
+         axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: array } )
+    .then((res) => {s
+      console.log(res)
+      this.getTeams()
+    })
+    .catch(e => console.log(e))
+       } else if (!res.data) {
+         axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: [{name: name, email: email}] } )
+    .then((res) => {
+      console.log(res)
+      this.getTeams()
+    })
+    .catch(e => console.log(e))
+       }
+     })
+     .catch(e => console.log(e))
   }
+
+
+
 },
  computed: {
   auth() {
