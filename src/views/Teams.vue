@@ -43,10 +43,12 @@
                 >
               </div>
 
+              
               <b-list-group>
-                <b-list-group-item variant="warning">{{
-                  team.teamCreator
-                }}</b-list-group-item>
+                <b-list-group-item variant="warning"
+                  >{{ team.teamCreator }}
+                </b-list-group-item>
+
                 <b-list-group-item
                   v-for="(member, index) in team.teamMembers"
                   :key="index"
@@ -61,18 +63,20 @@
                 </b-list-group-item>
               </b-list-group>
               <br />
-              <b-button
-                class="center"
-                variant="primary"
-                @click="joinTeam(team.id, loadedData.name, loadedData.email)"
-                >{{ $t("info.jointeam") }}</b-button
-              >
-              <b-button
+              <div class="d-flex align-items-center justify-content-center">
+                <b-button
+                  variant="primary"
+                  @click="joinTeam(team.id, loadedData.name, loadedData.email)"
+                  >{{ $t("info.jointeam") }}
+                </b-button>
+              </div>
+
+              <!-- <b-button
                 class="left"
                 variant="secondary"
                 @click="leftTeam(team.id)"
-                >{{ $t("Leave this team") }}</b-button
-              >
+                >{{ $t("Leave this team") }}
+                </b-button> -->
             </b-list-group-item>
           </b-list-group>
         </b-col>
@@ -87,102 +91,130 @@
             v-model="team"
           ></b-form-input>
         </b-input-group>
-        <b-button class="mt-3" variant="primary" @click="createTeam(loadedData)">{{
-          $t("info.create")
-        }}</b-button>
+        <b-button
+          class="mt-3"
+          variant="primary"
+          @click="createTeam(loadedData)"
+          >{{ $t("info.create") }}</b-button
+        >
       </b-modal>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
   name: "Home",
   components: {},
   data() {
     return {
-      team: '',
-      teams: []
+      team: "",
+      teams: [],
     };
   },
   methods: {
-    storeFriendEmail(email){
-        this.$store.dispatch('setFriendEmail', email)
+    storeFriendEmail(email) {
+      this.$store.dispatch("setFriendEmail", email);
     },
     showModal() {
       this.$refs["my-modal"].show();
     },
-    createTeam(loadedData ){
-      console.log()
-      axios.post('https://finduppartner.firebaseio.com/teams.json', {teamName : this.team, teamField : this.$route.params.game, teamCreator: this.loadedData.name, teamMembers: [] })
-      .then((result) => {
-        this.$refs["my-modal"].hide();
-        this.team = ''
-        this.getTeams()
-      })
-      .catch(e => console.log(e))
-  },
-  getTeams() {
-    axios.get('https://finduppartner.firebaseio.com/teams.json')
-    .then((res) => {
-      const data = res.data
-      const teams = []
-        for (let key in data) {
-          const team = data[key]
-          team.id = key
-          teams.push(team)
-        }
-      var match = teams.filter(match => match.teamField === this.$route.params.game)
-      this.teams = match
-    } )
-    .catch(e => console.log(e))
-  },
-  leftTeam(id) {
-    let name = this.$store.state.loadedData[0].name
-    axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: [name] } )
-    //axios.put('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: array } )
-  },
+    createTeam(loadedData) {
+      console.log();
+      axios
+        .post("https://finduppartner.firebaseio.com/teams.json", {
+          teamName: this.team,
+          teamField: this.$route.params.game,
+          teamCreator: this.loadedData.name,
+          teamMembers: [],
+        })
+        .then((result) => {
+          this.$refs["my-modal"].hide();
+          this.team = "";
+          this.getTeams();
+        })
+        .catch((e) => console.log(e));
+    },
+    getTeams() {
+      axios
+        .get("https://finduppartner.firebaseio.com/teams.json")
+        .then((res) => {
+          const data = res.data;
+          const teams = [];
+          for (let key in data) {
+            const team = data[key];
+            team.id = key;
+            teams.push(team);
+          }
+          var match = teams.filter(
+            (match) => match.teamField === this.$route.params.game
+          );
+          this.teams = match;
+        })
+        .catch((e) => console.log(e));
+    },
+    leftTeam(id) {
+      let name = this.$store.state.loadedData[0].name;
+      axios.patch(
+        "https://finduppartner.firebaseio.com/teams/" + id + ".json",
+        { teamMembers: [name] }
+      );
+      //axios.delete('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: array } )
+    },
 
- joinTeam(id, name , email) {
-     let teamMember = {name : name, email : email} 
-    
-     axios.get('https://finduppartner.firebaseio.com/teams/'+ id + '/teamMembers.json')
-     .then((res) => {
-       console.log(res)
-       if (res.data) {
-         var array = res.data
-         array.push(teamMember)
-         axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: array } )
-    .then((res) => {
-      console.log(res)
-      this.getTeams()
-    })
-    .catch(e => console.log(e))
-       } else if (!res.data) {
-         axios.patch('https://finduppartner.firebaseio.com/teams/'+ id + '.json', { teamMembers: [{name: name, email: email}] } )
-    .then((res) => {
-      console.log(res)
-      this.getTeams()
-    })
-    .catch(e => console.log(e))
-       }
-     })
-     .catch(e => console.log(e))
-  }
-},
- computed: {
-  auth() {
-    return this.$store.getters.isAuth 
+    joinTeam(id, name, email) {
+      let teamMember = { name: name, email: email };
+
+      axios
+        .get(
+          "https://finduppartner.firebaseio.com/teams/" +
+            id +
+            "/teamMembers.json"
+        )
+        .then((res) => {
+          console.log(res);
+          if (res.data) {
+            var array = res.data;
+            array.push(teamMember);
+            axios
+              .patch(
+                "https://finduppartner.firebaseio.com/teams/" + id + ".json",
+                { teamMembers: array }
+              )
+              .then((res) => {
+                console.log(res);
+                this.getTeams();
+              })
+              .catch((e) => console.log(e));
+          } else if (!res.data) {
+            axios
+              .patch(
+                "https://finduppartner.firebaseio.com/teams/" + id + ".json",
+                { teamMembers: [{ name: name, email: email }] }
+              )
+              .then((res) => {
+                console.log(res);
+                this.getTeams();
+              })
+              .catch((e) => console.log(e));
+          }
+        })
+        .catch((e) => console.log(e));
+    },
   },
-  loadedData(){
-    return this.$store.getters.loadedData
-  }
+  computed: {
+    auth() {
+      return this.$store.getters.isAuth;
+    },
+    loadedData() {
+      return this.$store.getters.loadedData;
+    },
   },
-created()  {
-  this.getTeams()
-  this.$store.dispatch('fetchData')
-}
+  created() {
+    this.getTeams();
+    this.$store.dispatch("fetchData");
+  },
 };
 </script>
 <style  scoped>
