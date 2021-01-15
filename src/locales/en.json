@@ -54,6 +54,7 @@
     "name": "Name",
     "email": "E-mail",
     "password": "Password",
+    "profile": "Profile",
     "homeAddress": "Home Address",
     "telephoneNum": "Telephone Number",
     "account": "Don't have an account? Sign Up", 
