@@ -1,5 +1,41 @@
 {
   "message": "tere i18n !!",
+  "leaveTeam":"Lahku sellest meeskonnast",
+  "profile": "Mine profiili juurde",
+  "search": "Spordiotsing ...",
+  "deleteTeam": "Kustuta meeskond",
+
+  "sports": {
+    "basketball": {
+      "name": "Korvpall",
+      "info": "Tere korvpallisõbrad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool"
+    },
+    "badminton": {
+      "name": "Sulgpall",
+      "info": "Tere sulgpalli armastajad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool."
+    },
+    "football": {
+      "name": "Jalgpall",
+      "info": "Tere, jalgpallisõbrad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool"
+    },
+    "cricket": {
+     "name": "Kriket",
+     "info": "Tere, kriketisõbrad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool."
+    },
+    "handball": {
+      "name": "Käsipall",
+      "info": "Tere, käsipalli armastajad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool."
+    },
+    "vollyball": {
+      "name": "Võrkpall",
+      "info": "Tere, võrkpallihuvilised, tahate meeskonnaliikmete kohta teada. Klõpsake allpool."
+    },
+    "tabletennis": {
+      "name": "Lauatennis",
+      "info": "Tere, lauatennise austajad, tahate meeskonnaliikmetest teada saada. Klõpsake allpool."
+    }
+  },
+
   "header": {
     "Findup": "Findup",
     "home": "Avaleht",

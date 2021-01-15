@@ -1,11 +1,13 @@
 <template>
   <div class="homeImage pt-5">
-    <b-container>
+    <input type="text" v-model="keyword" v-bind:placeholder="$t('search')">
+   <br><br>
+    <b-container> 
       <b-card-group columns>
         <b-card
-          v-for="(game, index) in $t('fields')"
+          v-for="(game, index) in filteredgames"
           :key="index"
-          :title="game.area"
+          :title="game.heading"
           :img-src="game.img"
           :img-alt="game.area"
           img-top
@@ -13,7 +15,7 @@
           class="card"
         >
           <b-card-text>
-            {{ game.info }}
+            {{ game.text }}
           </b-card-text>
 
           <b-button @click="toTeams(index)" variant="primary">{{ $t('info.teamMembersInfo') }}</b-button>
@@ -32,12 +34,77 @@ export default {
   components: {},
   data() {
     return {
+      keyword:'',
+      games: [
+        {
+          heading: this.$t('sports.basketball.name'),
+          text:
+            this.$t('sports.basketball.info'),
+          img:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt0Sh97iYcu0kTguhcsW_szWfzolqu1ynGeQ&usqp=CAU",
+        },
+        {
+          heading: this.$t('sports.badminton.name'),
+          text:
+            this.$t('sports.badminton.info'),
+          img:
+            "https://i2.wp.com/www.healthfitnessrevolution.com/wp-content/uploads/2014/03/badminton-1428047_1920-2.jpg?fit=1920%2C1280&ssl=1",
+        },
+        {
+          heading: this.$t('sports.football.name'),
+          text:
+            this.$t('sports.football.info'),
+          img:
+            "https://www.worcester.gov.uk/images/easyblog_shared/2019/b2ap3_large_Football---carousel.jpg",
+        },
+        {
+          heading: this.$t('sports.cricket.name'),
+          text:
+            this.$t('sports.cricket.info'),
+          img:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYHGznCkqXL8MbFAy8YrYgk3LWzPU9b95T5g&usqp=CAU",
+        },
+        {
+          heading: this.$t('sports.handball.name'),
+          text:
+            this.$t('sports.handball.info'),
+          img:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdz75gWK12Q2d_p3aahNW52yui2cc7USM1dg&usqp=CAU",
+        },
+        {
+          heading: this.$t('sports.vollyball.name'),
+          text:
+            this.$t('sports.vollyball.info'),
+          img:
+            "https://www.pe.com/wp-content/uploads/2019/11/xxxx_spo_ocr-l-volleyball-generic-stock-001-3.jpg",
+        },
+        {
+          heading: this.$t('sports.tabletennis.name'),
+          text:
+            this.$t('sports.tabletennis.info'),
+          img:
+            "https://www.southdownsleisure.co.uk/wp-content/uploads/2019/03/50_tabletennis-600x600.jpg",
+        },
+      ],
     }
   },
   methods: {
     toTeams(pathz) {
       this.$router.push({ path: `/${this.$i18n.locale}/teams/${pathz}` })
     }
+  },
+  computed: {
+            filteredgames: function() {
+                var games = [];
+                for(var i in this.games) {
+                    var game = this.games[i];
+                    if(game.heading.toUpperCase().indexOf(this.keyword.toUpperCase()) !== -1 ||
+                        game.text.indexOf(this.keyword) !== -1) {
+                        games.push(game);
+                    }
+                }
+                return games;
+            }
   }
 };
 </script>

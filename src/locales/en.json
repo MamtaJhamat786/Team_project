@@ -1,5 +1,40 @@
 {
   "message": "hello i18n!!",
+  "leaveTeam":"Leve This Team",
+  "profile": "Go to Profile",
+  "search": "Search Sports ...",
+  "deleteTeam": "Delete Team",
+
+ "sports": {
+   "basketball": {
+     "name": "Basketball",
+     "info": "Hello Basketball lovers, want to know about team members. Click Below."
+   },
+   "badminton": {
+     "name": "Badminton",
+     "info": "Hello Badminton lovers, want to know about team members. Click Below."
+   },
+   "football": {
+     "name": "Football",
+     "info": "Hello Football lovers, want to know about team members. Click Below."
+   },
+   "cricket": {
+    "name": "Cricket",
+    "info": "Hello Badminton lovers, want to know about team members. Click Below."
+   },
+   "handball": {
+     "name": "Handball",
+     "info": "Hello Handball lovers, want to know about team members. Click Below."
+   },
+   "vollyball": {
+     "name": "Vollyball",
+     "info": "Hello Vollyball lovers, want to know about team members. Click Below."
+   },
+   "tabletennis": {
+     "name": "Tabletennis",
+     "info": "Hello Tabletennis lovers, want to know about team members. Click Below."
+   }
+ },
 
   "header": {
     "findup": "Findup",
