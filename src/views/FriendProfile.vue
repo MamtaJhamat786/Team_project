@@ -2,14 +2,14 @@
   <div>
     <b-container>
         <div class="d-flex justify-content-center flex-column align-items-center mt-5">
-      <h1>{{ friend.name }}'s  profile</h1>
+      <h1>{{ friend.name }}'s  {{$t("info.profile")}}</h1>
       <br />
       <b-card class="cardw">
           <b-table-simple borderless>
               <b-tbody>
                   <b-tr>
                       <b-th>
-                          Email:
+                          {{$t("info.email")}}
                       </b-th>
                       <b-td>
                           {{friend.email}}
@@ -17,7 +17,7 @@
                   </b-tr>
                   <b-tr>
                       <b-th>
-                          Home Address:
+                          {{$t("info.homeAddress")}}
                       </b-th>
                       <b-td>
                           {{friend.homeAddress}}
@@ -25,7 +25,7 @@
                   </b-tr>
                   <b-tr>
                       <b-th>
-                          Phone number:
+                          {{$t("info.telephoneNum")}}
                       </b-th>
                       <b-td>
                           {{friend.telephoneNumber}}

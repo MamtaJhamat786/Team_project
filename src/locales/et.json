@@ -55,6 +55,7 @@
     "name": "Nimi",
     "email": "E-post",
     "password": "Parool",
+    "profile": "profiil", 
     "homeAddress": "Kodu aadress",
     "telephoneNum": "Telefoninumber",
     "account": "Kas teil pole kontot? Registreeri",
@@ -62,6 +63,7 @@
     "teamMembersInfo": "Liitu meie meeskonnaga",
     "createteam": "Loo meeskond",
     "create": "Looma",
+    "leaveteam": "Lahku tiimist",
     "jointeam": "Liitu meeskonnaga",
     "createNewTeam": "Loo uus meeskond",
     "teamName": "Meeskonna Nimi"

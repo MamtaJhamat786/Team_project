@@ -54,6 +54,7 @@
     "name": "Name",
     "email": "E-mail",
     "password": "Password",
+    "profile": "Profile",
     "homeAddress": "Home Address",
     "telephoneNum": "Telephone Number",
     "account": "Don't have an account? Sign Up", 
@@ -62,6 +63,7 @@
     "createteam": "Create a Team",
     "create": "Create",
     "jointeam": "Join our team",
+    "leaveteam": "Leave team",
     "createNewTeam": "Create New Team",
     "teamName": "Team Name"
 
