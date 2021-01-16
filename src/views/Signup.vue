@@ -7,6 +7,7 @@
           <b-form class="mx-auto" style="max-width: 30rem">
             <b-input-group class="mt-4">
               <b-form-input
+              id = 'name-input'
                 name="name"
                 :placeholder="$t('info.name')"
                 type="text"
@@ -17,6 +18,7 @@
 
             <b-input-group class="mt-3">
               <b-form-input
+              id = 'email-input'
                 :placeholder="$t('info.email')"
                 type="email"
                 v-model="$v.form.email.$model"
@@ -44,6 +46,7 @@
 
             <b-input-group class="mt-3">
               <b-form-input
+              id = 'homeAddress-input'
                 :placeholder="$t('info.homeAddress')"
                 type="text"
                 v-model="$v.form.homeAddress.$model"
@@ -53,6 +56,7 @@
 
             <b-input-group class="mt-3">
               <b-form-input
+              id = 'phonenum-input'
                 :placeholder="$t('info.telephoneNum')"
                 type="number"
                 v-model="$v.form.telephoneNumber.$model"
@@ -60,7 +64,12 @@
               ></b-form-input>
             </b-input-group>
 
-            <b-button variant="primary" class="mt-3"  @click="submit($event)">{{ $t('header.signup') }} </b-button>
+            <b-button 
+            id = 'btn-signup'
+            variant="primary" 
+            class="mt-3" 
+             @click="submit($event)">{{ $t('header.signup') }} 
+             </b-button>
           </b-form>
         </b-card>
       </div>

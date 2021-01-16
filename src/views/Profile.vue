@@ -1,7 +1,7 @@
 <template>
   <div class="mt -10 d-flex justify-content-center align-items-center">
     <b-card class="mt-5 ">
-    <p v-for="(item, index) in data" :key="index" > {{ item.email }},<br/> {{ item.name }}</p> 
+    <p v-for="(item, index) in data" :key="index" > {{ item.name }},<br/> {{ item.email }}</p> 
     </b-card>             
   </div>
 </template>
