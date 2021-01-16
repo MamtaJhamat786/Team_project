@@ -1,6 +1,10 @@
 <template>
   <div class="homeImage pt-5">
-    <input type="text" v-model="keyword" v-bind:placeholder="$t('search')">
+    <input 
+    id = 'search'
+    type="text" 
+    v-model="keyword" 
+    v-bind:placeholder="$t('search')">
    <br><br>
     <b-container> 
       <b-card-group columns>
@@ -18,7 +22,11 @@
             {{ game.text }}
           </b-card-text>
 
-          <b-button @click="toTeams(index)" variant="primary">{{ $t('info.teamMembersInfo') }}</b-button>
+          <b-button 
+          id = 'btn-seeTeams'
+          @click="toTeams(index)" 
+          variant="primary">{{ $t('info.teamMembersInfo') }}
+          </b-button>
         </b-card>
       </b-card-group>
     </b-container>

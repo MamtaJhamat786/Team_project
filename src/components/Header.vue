@@ -32,8 +32,8 @@
             }}</b-nav-item>
 
           <b-nav-item-dropdown text="Lang" right>
-            <b-dropdown-item @click="setLocale('en')">ENG</b-dropdown-item>
-            <b-dropdown-item @click="setLocale('et')">EST</b-dropdown-item>
+            <b-dropdown-item id = 'ENG' @click="setLocale('en')">ENG</b-dropdown-item>
+            <b-dropdown-item id = 'EST' @click="setLocale('et')">EST</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>

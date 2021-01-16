@@ -9,13 +9,27 @@
         <h1>{{ $t('header.login') }}</h1>
         <b-alert :show="wrong" variant="danger"> Enter valid password and email</b-alert>
         <b-input-group class="mt-5">
-          <b-form-input :placeholder="$t('info.email')" type="email" v-model="form.email"></b-form-input>
+          <b-form-input 
+          id = 'email-input'
+          :placeholder="$t('info.email')" 
+          type="email" 
+          v-model="form.email">
+          </b-form-input>
+
           </b-input-group>
         <b-input-group class="mt-4">
-          <b-form-input :placeholder="$t('info.password')" type="password" v-model="form.password" autocomplete="on"></b-form-input>
+          <b-form-input 
+          id = 'password-input'
+          :placeholder="$t('info.password')" 
+          type="password" 
+          v-model="form.password" 
+          autocomplete="on">
+          </b-form-input>
         </b-input-group>
 
-        <b-button variant="primary" class="mt-5" @click="submit()">{{ $t('header.login') }}</b-button>
+        <b-button 
+        id = 'btn-login'
+        variant="primary" class="mt-5" @click="submit()">{{ $t('header.login') }}</b-button>
       <p class=" mt-5">{{ $t('info.account') }}  <b-link :to="`/${$i18n.locale}/signup`">{{ $t('info.here') }}</b-link>  </p>
      
       </b-form>

@@ -53,12 +53,15 @@
                 }}
 
                 <b-button 
-                class="left" variant="danger" 
+                id = 'btn-deleteTeam'
+                class="left" 
+                variant="danger" 
+                v-if="team.teamCreator === loadedData.name"
                 @click="deleteTeam(team.id, loadedData.name, loadedData.email)"
-                >{{ $t('deleteTeam') }}</b-button
+                >{{ $t('deleteTeam') }}
+                </b-button
               >
-              
-                
+
                 </b-list-group-item>
                 <b-list-group-item
                   v-for="(member, index) in team.teamMembers"
@@ -75,17 +78,13 @@
                 </b-list-group-item>
               </b-list-group>
               <br />
+
               <b-button
-                class="center"
+              id = 'btn-joinTeam'
+                class="absolute"
                 variant="primary"
                 @click="joinTeam(team.id, loadedData.name, loadedData.email)"
                 >{{ $t("info.jointeam") }}</b-button
-              >
-              <b-button
-                class="left"
-                variant="secondary"
-                @click="leftTeam(team.id)"
-                >{{ $t("leaveTeam") }}</b-button
               >
               
             </b-list-group-item>
@@ -97,12 +96,17 @@
       <b-modal ref="my-modal" :title="$t('info.createNewTeam')" hide-footer>
         <b-input-group class="mt-2">
           <b-form-input
+          id = 'teamName-input'
             type="text"
             :placeholder="$t('info.teamName')"
             v-model="team"
           ></b-form-input>
         </b-input-group>
-        <b-button class="mt-3" variant="primary" @click="createTeam">{{
+        <b-button 
+        id = 'btn-create'
+        class="mt-3" 
+        variant="primary" 
+        @click="createTeam">{{
           $t("info.create")
         }}</b-button>
       </b-modal>
