@@ -57,14 +57,7 @@
                 @click="deleteTeam(team.id, loadedData.name, loadedData.email)"
                 >{{ $t('deleteTeam') }}
                 </b-button
-              >
-
-                  <b-button
-                    class="left"
-                    variant="danger" v-if="team.teamCreator === loadedData.name"
-                    @click="deleteTeam(team.id, loadedData.name, loadedData.email)"
-                    >{{ $t("deleteTeam") }}</b-button>   
-
+              >  
                 </b-list-group-item>
 
                 <b-list-group-item
@@ -84,13 +77,8 @@
 
               <br />
 
-              <b-button
-              id = 'btn-joinTeam'
-                class="absolute"
-
-             <b-button
+              <b-button id = 'btn-joinTeam' 
                 class="mt-3"
-
                 variant="primary"
                 @click="joinTeam(team.id, loadedData.name, loadedData.email)"
                 >{{ $t("info.jointeam") }}</b-button
