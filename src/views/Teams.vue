@@ -86,9 +86,7 @@
 
               <b-button
               id = 'btn-joinTeam'
-                class="absolute"
-
-             <b-button
+                
                 class="mt-3"
 
                 variant="primary"
