@@ -58,7 +58,6 @@
                 >{{ $t('deleteTeam') }}
                 </b-button
               >  
-
                 </b-list-group-item>
 
                 <b-list-group-item
@@ -76,6 +75,7 @@
               </b-list-group>
 
               <br />
+
 
               <b-button
               id = 'btn-joinTeam'      
