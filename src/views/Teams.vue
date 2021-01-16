@@ -71,14 +71,15 @@
                     :to="`/${$i18n.locale}/friend/${member.name}`"
                     >{{ $t("profile") }}</b-button
                   >
-                </b-list-group-item>
-                 
+                </b-list-group-item>      
               </b-list-group>
 
               <br />
 
-              <b-button id = 'btn-joinTeam' 
-                class="mt-3"
+
+              <b-button
+              id = 'btn-joinTeam'      
+              class="mt-3"
                 variant="primary"
                 @click="joinTeam(team.id, loadedData.name, loadedData.email)"
                 >{{ $t("info.jointeam") }}</b-button
