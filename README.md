@@ -46,3 +46,13 @@ rm -rf node_modules package-lock.json && npm install
 ```
 npm run build
 ```
+
+### The link of VIDEO
+```
+https://www.youtube.com/watch?v=LPVgHKQKkAk&feature=youtu.be
+```
+
+### Deploy
+```
+https://www.findup99.com/en
+```
