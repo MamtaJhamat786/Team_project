@@ -49,7 +49,7 @@ npm run build
 
 ### The link of VIDEO
 ```
-https://www.youtube.com/watch?v=LPVgHKQKkAk&feature=youtu.be
+https://www.dropbox.com/s/pcz0d7ds7jv4qby/original%20video.mov?dl=0
 ```
 
 ### Deploy
