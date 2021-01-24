@@ -65,6 +65,7 @@
                   :key="index"
                   >{{ member.name }}
                   <b-button
+                    id = "btn-goProfile"
                     class="left"
                     variant="success"
                     @click="storeFriendEmail(member.email)"
