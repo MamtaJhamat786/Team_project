@@ -24,6 +24,14 @@ https://trello.com/b/NJQiHPxq/teamproject
 https://drive.google.com/drive/folders/1qqz23Yb3wkUby824ljF2xWjmyNqlsTRD?usp=sharing
 
 
+##Clone the project
+```
+git clone https://github.com/MamtaJhamat786/Team_project
+```
+
+```
+cd Team_project
+```
 
 ## Project setup
 ```
@@ -45,4 +53,19 @@ rm -rf node_modules package-lock.json && npm install
 ### Compiles and minifies for production
 ```
 npm run build
+```
+
+### The link of VIDEO
+```
+https://www.dropbox.com/s/pcz0d7ds7jv4qby/original%20video.mov?dl=0
+```
+
+### Deploy
+```
+https://www.findup99.com/en
+```
+
+### Selenium Test Video Link
+```
+https://www.dropbox.com/s/wapu0dwevc7b41t/Selenium%20Test%20By%20Ruby%20Video.mov?dl=0
 ```
